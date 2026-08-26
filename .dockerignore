@@ -1,15 +1,18 @@
+# Dependencies
 **/node_modules
+
+# Builds
 **/dist
 **/coverage
 **/.turbo
-**/.git
+**/*.tsbuildinfo
 
+# Environment
 **/.env
 **/.env.*
 
-apps/server/.env
-apps/server/.env.*
-apps/web/.env
-apps/web/.env.*
+# Git
+**/.git
 
+# Vite
 apps/web/.vite
