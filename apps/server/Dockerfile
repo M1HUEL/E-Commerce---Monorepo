@@ -27,7 +27,7 @@ COPY apps/server/package.json ./apps/server/
 COPY libs/shared/package.json ./libs/shared/
 COPY libs/db/package.json ./libs/db/
 
-RUN pnpm install --frozen-lockfile --prod
+RUN pnpm install --frozen-lockfile --prod --ignore-scripts
 
 COPY --from=builder /app/apps/server/dist ./apps/server/dist
 COPY --from=builder /app/libs/shared/dist ./libs/shared/dist
