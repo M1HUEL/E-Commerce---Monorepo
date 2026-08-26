@@ -64,31 +64,68 @@ Start dev servers with `pnpm dev`, then:
 ```text
 ecommerce/
 ├── apps/
-│   ├── server/              # REST API (NestJS + Express)
+│   ├── server/                  # REST API (NestJS + Express)
 │   │   ├── src/
-│   │   │   ├── dto/         # Data transfer objects
-│   │   │   ├── app.*        # Health endpoint
-│   │   │   ├── products.*   # Products endpoint
+│   │   │   ├── common/          # Shared utils within server
+│   │   │   ├── modules/
+│   │   │   │   ├── health/      # Health module (controller, service, dto)
+│   │   │   │   └── products/    # Products module (controller, service, dto)
+│   │   │   ├── app.module.ts    # Root module
 │   │   │   └── main.ts
 │   │   ├── Dockerfile
 │   │   └── tsconfig.json
-│   └── web/                 # SPA (React + Vite)
+│   └── web/                     # SPA (React + Vite)
 │       ├── src/
-│       │   ├── app.tsx      # Products page
+│       │   ├── features/
+│       │   │   └── products/    # Products feature (component, hook)
+│       │   ├── shared/          # Shared utils within web
+│       │   ├── app.tsx          # Root component
 │       │   ├── router.tsx
 │       │   └── main.tsx
 │       ├── Dockerfile
 │       ├── nginx.conf
 │       └── tsconfig.json
 ├── libs/
-│   ├── db/                  # Database layer
-│   ├── shared/              # Shared types (HealthResponse, Product)
-│   └── ui/                  # UI components (Button, cn)
-├── .github/workflows/ci.yml # CI (lint, typecheck, test, docker build)
-├── commitlint.config.mjs    # Conventional commits
-├── docker-compose.yml       # Docker orchestration
-├── turbo.json               # Turborepo pipeline
-└── tsconfig.base.json       # Shared TypeScript config
+│   ├── db/                      # Database layer
+│   ├── shared/                  # Shared types (HealthResponse, Product)
+│   └── ui/                      # UI components (Button, cn)
+├── .github/workflows/ci.yml     # CI (lint, typecheck, test, docker build)
+├── commitlint.config.mjs        # Conventional commits
+├── docker-compose.yml           # Docker orchestration
+├── turbo.json                   # Turborepo pipeline
+└── tsconfig.base.json           # Shared TypeScript config
+```
+
+### Server: Module-Based Architecture
+
+Each domain is a self-contained NestJS module inside `src/modules/`:
+
+```
+src/modules/
+├── health/
+│   ├── dto/
+│   │   └── health-response.dto.ts
+│   ├── health.controller.ts
+│   ├── health.service.ts
+│   └── health.module.ts
+└── products/
+    ├── dto/
+    │   └── product.dto.ts
+    ├── products.controller.ts
+    ├── products.service.ts
+    └── products.module.ts
+```
+
+### Web: Feature-Based Architecture
+
+Each feature is a self-contained folder inside `src/features/`:
+
+```
+src/features/
+└── products/
+    ├── product-list.tsx   # UI component
+    ├── use-products.ts    # Data fetching hook
+    └── index.ts           # Barrel export
 ```
 
 ## Stack

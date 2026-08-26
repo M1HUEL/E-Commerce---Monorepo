@@ -1,7 +1,7 @@
 import type { Product } from '@ecommerce/shared'
 import { Injectable } from '@nestjs/common'
 
-import { ProductDto } from '@/dto/product.dto'
+import { ProductDto } from '@/modules/products/dto/product.dto'
 
 const PRODUCTS: Product[] = [
   {

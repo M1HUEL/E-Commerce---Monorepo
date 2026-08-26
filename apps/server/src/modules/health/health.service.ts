@@ -2,10 +2,10 @@ import { databaseConfig } from '@ecommerce/db'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
-import { HealthResponseDto } from '@/dto/health-response.dto'
+import { HealthResponseDto } from '@/modules/health/dto/health-response.dto'
 
 @Injectable()
-export class AppService {
+export class HealthService {
   constructor(private readonly config: ConfigService) {}
 
   getHealth(): HealthResponseDto {
