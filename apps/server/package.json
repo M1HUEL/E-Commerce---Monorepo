@@ -1,0 +1,33 @@
+{
+  "name": "@ecommerce/server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "nest build && tsc-alias",
+    "clean": "rimraf dist coverage",
+    "dev": "nest start --watch",
+    "start": "node dist/main",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ecommerce/db": "workspace:*",
+    "@ecommerce/shared": "workspace:*",
+    "@nestjs/common": "^11.1.7",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.1.7",
+    "@nestjs/platform-express": "^11.1.7",
+    "@nestjs/swagger": "^11.4.7",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.7",
+    "@types/node": "^26.2.0",
+    "tsc-alias": "^1.9.2",
+    "tsconfig-paths": "^4.2.0"
+  }
+}

@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+
+/* Scan workspace UI package for reusable component styles */
+@source '../../../libs/ui';

@@ -1,0 +1,10 @@
+{
+  // Format
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    // Lint
+    "dbaeumer.vscode-eslint",
+    // Editor
+    "editorconfig.editorconfig"
+  ]
+}

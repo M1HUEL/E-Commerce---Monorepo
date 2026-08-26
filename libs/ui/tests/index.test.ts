@@ -1,0 +1,7 @@
+import { describe, expect, it } from 'vitest'
+
+describe('@ecommerce/ui', () => {
+  it('works', () => {
+    expect(true).toBe(true)
+  })
+})

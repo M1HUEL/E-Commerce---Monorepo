@@ -1,0 +1,15 @@
+**/node_modules
+**/dist
+**/coverage
+**/.turbo
+**/.git
+
+**/.env
+**/.env.*
+
+apps/server/.env
+apps/server/.env.*
+apps/web/.env
+apps/web/.env.*
+
+apps/web/.vite
