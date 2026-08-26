@@ -10,6 +10,11 @@
   // ESLint (monorepo: resolves the nearest eslint.config.js per package)
   "eslint.workingDirectories": [{ "mode": "auto" }],
 
+  // Files
+  "files.associations": {
+    ".nvmrc": "plaintext"
+  },
+
   // TypeScript
   "js/ts.tsdk.path": "node_modules/typescript/lib",
   "js/ts.tsdk.promptToUseWorkspaceVersion": true,
@@ -22,6 +27,7 @@
     "**/.turbo/**": true,
     "**/node_modules/**": true
   },
+
   "search.exclude": {
     "**/dist": true,
     "**/coverage": true,
