@@ -29,6 +29,13 @@ COPY libs/db/package.json ./libs/db/
 
 RUN pnpm install --frozen-lockfile --prod --ignore-scripts
 
+# Prisma client is generated into node_modules and is needed at runtime, but
+# --ignore-scripts skipped it. The CLI is a devDependency, so install just
+# prisma in this throwaway runner image (does not touch the repo) and generate.
+COPY libs/db/ ./libs/db/
+RUN pnpm add -D --filter @ecommerce/db prisma@7.10.0 && \
+    pnpm --filter @ecommerce/db exec prisma generate
+
 COPY --from=builder /app/apps/server/dist ./apps/server/dist
 COPY --from=builder /app/libs/shared/dist ./libs/shared/dist
 COPY --from=builder /app/libs/db/dist ./libs/db/dist

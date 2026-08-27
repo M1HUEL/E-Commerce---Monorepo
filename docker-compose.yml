@@ -1,4 +1,22 @@
 services:
+  db:
+    image: postgres:16-alpine
+    container_name: ecommerce-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ecommerce
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d ecommerce']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   server:
     build:
       context: .
@@ -9,6 +27,10 @@ services:
       - apps/server/.env
     environment:
       - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/ecommerce
+    depends_on:
+      db:
+        condition: service_healthy
     restart: unless-stopped
 
   web:
@@ -20,3 +42,6 @@ services:
     depends_on:
       - server
     restart: unless-stopped
+
+volumes:
+  postgres_data:
