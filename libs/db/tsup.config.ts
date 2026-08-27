@@ -6,7 +6,7 @@ export default defineConfig({
   dts: true,
   sourcemap: true,
   clean: true,
-  external: ['@prisma/client'],
+  external: ['@prisma/client', '@prisma/adapter-pg', 'pg', 'dotenv'],
   outExtension({ format }) {
     return { js: format === 'cjs' ? '.cjs' : '.js' }
   },

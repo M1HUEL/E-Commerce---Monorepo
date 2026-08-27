@@ -2,7 +2,9 @@ packages:
   - 'apps/*'
   - 'libs/*'
 allowBuilds:
+  '@prisma/engines': true
   '@scarf/scarf': true
   esbuild: true
   msgpackr-extract: true
+  prisma: true
   workerd: true
