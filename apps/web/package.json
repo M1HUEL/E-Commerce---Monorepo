@@ -1,8 +1,8 @@
 {
   "name": "@ecommerce/web",
   "version": "1.0.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist coverage",
