@@ -2,33 +2,43 @@
   "name": "@ecommerce/ui",
   "version": "1.0.0",
   "private": true,
-  "main": "./dist/index.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "clean": "rimraf dist coverage",
+    "dev": "tsup --watch",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.vitest.json"
   },
-  "devDependencies": {
-    "@types/react": "^19.2.18",
-    "tailwindcss": "^4.3.3"
-  },
-  "peerDependencies": {
-    "react": "^19.2.8"
-  },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "tailwindcss": "^4.3.3",
+    "tsup": "^8.5.1"
+  },
+  "peerDependencies": {
+    "react": "^19.2.8"
   }
 }

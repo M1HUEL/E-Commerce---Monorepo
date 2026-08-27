@@ -2,21 +2,32 @@
   "name": "@ecommerce/shared",
   "version": "1.0.0",
   "private": true,
-  "main": "./dist/index.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsup",
     "clean": "rimraf dist coverage",
+    "dev": "tsup --watch",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.vitest.json"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1"
   }
 }

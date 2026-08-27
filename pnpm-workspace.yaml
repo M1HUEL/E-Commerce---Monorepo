@@ -3,3 +3,6 @@ packages:
   - 'libs/*'
 allowBuilds:
   '@scarf/scarf': true
+  esbuild: true
+  msgpackr-extract: true
+  workerd: true
