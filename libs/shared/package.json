@@ -28,6 +28,6 @@
     "typecheck": "tsc --noEmit && tsc -p tsconfig.vitest.json"
   },
   "devDependencies": {
-    "tsup": "^8.5.1"
+    "tsup": "^9.0.0"
   }
 }
